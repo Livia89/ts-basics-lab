@@ -13,7 +13,16 @@ export default () => {
   // • Create an interface `CartItem` and replace the param's type with it
   // • Make variantId optional
 
-  function addToCart(item: {id: number, title: string, variantId: number}) {
+  
+  interface cartItem {
+    id: number;
+    title: String;
+    variantId?: number;
+
+  }
+
+
+  function addToCart(item : cartItem) {
     console.log('[Exercise 4.1]', `Adding "${item.title}" to cart.`);
   }
 
@@ -24,6 +33,11 @@ export default () => {
   // • Create and implement an interface on `Person` to ensure it always has accessible
   //   `name` and `age` member properties.
 
+
+  interface Person {
+    name:string;
+    age:number;
+  }
   class Person {
     constructor(public name: string, public age: number) {}
   }
@@ -40,11 +54,21 @@ export default () => {
   // • Fix whatever is wrong with `tampa`
 
   // [do not edit] (pretend this is coming from external `foo.d.ts` lib)
+  
   interface City {
     name: string;
   }
   // [/do not edit]
 
+  interface Coords {
+    latitude: number;
+    longitude: number;
+  }
+
+  interface City{
+    coords : Coords;
+  }
+  
   const montreal = {
     coords: {
       latitude: 42.332,
@@ -55,8 +79,8 @@ export default () => {
 
   const tampa = {
     coords: {
-      latitude: '27.9478',
-      longitude: '-82.4584',
+      latitude: 27.9478,
+      longitude: -82.4584,
     },
     name: 'Tampa',
   };
